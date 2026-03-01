@@ -1,9 +1,18 @@
 declare module 'react-globe.gl' {
-  import { ComponentType } from 'react'
+  import { ComponentType, Ref } from 'react'
   
+  interface GlobeInstance {
+    controls: () => {
+      autoRotate: boolean
+      autoRotateSpeed: number
+    }
+  }
+
   interface GlobeProps {
+    ref?: Ref<GlobeInstance>
     globeImageUrl?: string
     backgroundImageUrl?: string
+    backgroundColor?: string
     pointsData?: object[]
     pointLat?: string | ((d: object) => number)
     pointLng?: string | ((d: object) => number)
@@ -13,7 +22,6 @@ declare module 'react-globe.gl' {
     onPointClick?: (point: object) => void
     width?: number
     height?: number
-    backgroundColor?: string
   }
 
   const Globe: ComponentType<GlobeProps>
