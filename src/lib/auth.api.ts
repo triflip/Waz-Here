@@ -15,7 +15,7 @@ export const registerUser = async (
   if (!data.user) throw new Error('No user returned')
 
   const { error: profileError } = await supabase
-    .from('profiles')
+    .from('profile')
     .insert({
       id: data.user.id,
       full_name: fullName,

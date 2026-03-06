@@ -84,7 +84,7 @@ const Register = () => {
           type="password"
           name="password"
           placeholder="Password"
-          value={formData.email}
+          value={formData.password}
           onChange={handleChange}
           required
           className="bg-transparent border border-green-900 focus:border-green-500 text-white placeholder-gray-600 rounded-lg px-4 py-3 outline-none transition-colors"
