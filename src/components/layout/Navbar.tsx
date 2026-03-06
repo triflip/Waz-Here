@@ -23,7 +23,7 @@ const Navbar = () => {
         {items.map((item) => (
 
           item.isMain ? (
-            // Botó central — Add Flag
+    
             <button
               key={item.path}
               onClick={() => navigate(item.path)}
@@ -32,7 +32,7 @@ const Navbar = () => {
               {item.icon}
             </button>
           ) : (
-            // Botons normals
+     
             <button
               key={item.path}
               onClick={() => navigate(item.path)}
