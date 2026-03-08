@@ -6,7 +6,7 @@ export const getProfile = async (userId: string): Promise<Profile> => {
     .from('profile')
     .select('*')
     .eq('id', userId)
-    .single()
+    .maybeSingle()
 
     if (error) throw error
     return data
