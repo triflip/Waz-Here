@@ -26,7 +26,7 @@ const Landing = () => {
         <h1 className="text-6xl font-bold text-white tracking-widest">
           WAZ HERE
         </h1>
-        <p className="text-green-500 text-sm tracking-[0.3em] mt-2 uppercase">
+        <p className="text-primary text-sm tracking-[0.3em] mt-2 uppercase">
           Plant your flag. Own your journey.
         </p>
       </div>
@@ -51,7 +51,7 @@ const Landing = () => {
         </button>
         <button
           onClick={() => navigate('/login')}
-          className="w-full border border-green-500 text-green-500 hover:bg-green-500 hover:text-black font-bold py-3 rounded-full transition-all duration-300"
+          className="w-full border border-primary text-primary hover:bg-green-500 hover:text-black font-bold py-3 rounded-full transition-all duration-300"
         >
           Login
         </button>

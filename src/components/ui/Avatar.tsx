@@ -16,7 +16,7 @@ const Avatar = ({url, name, size = 'md'}: AvatarProps) => {
     const initial =name ? name.charAt(0).toUpperCase() :'🚩'
 
     return (
-      <div className={`${sizes[size]} rounded-full border-2 border-green-500 overflow-hidden bg-gray-900 flex items-center justify-center shrink-0`}>
+      <div className={`${sizes[size]} rounded-full border-2 border-primary overflow-hidden bg-gray-900 flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(19,236,73,0.35)]`}>
       {url ? (
         <img
           src={url}
@@ -24,7 +24,7 @@ const Avatar = ({url, name, size = 'md'}: AvatarProps) => {
           className="w-full h-full object-cover"
         />
       ) : (
-        <span className="text-green-500 font-bold">{initial}</span>
+        <span className="text-primary font-bold">{initial}</span>
       )}
     </div>
   )

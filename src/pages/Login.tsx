@@ -13,8 +13,6 @@ const Login = () => {
     password: '',
   })
 
-  // Un sol handler per tots els camps — llegeix el "name" de l'input
-  // i actualitza només aquell camp al formData
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
@@ -35,12 +33,12 @@ const Login = () => {
   }
 
   return (
-    <div className="min-h-screen bg-black flex flex-col items-center justify-center px-6">
+    <div className="min-h-screen bg-background flex flex-col items-center justify-center px-6">
 
       <h1 className="text-4xl font-bold text-white tracking-widest mb-2">
         WAZ HERE
       </h1>
-      <p className="text-green-500 text-xs tracking-[0.3em] uppercase mb-10">
+      <p className="text-primary text-xs tracking-[0.3em] uppercase mb-10">
         Plant your flag. Own your journey.
       </p>
 
@@ -53,7 +51,7 @@ const Login = () => {
           value={formData.email}
           onChange={handleChange}
           required
-          className="bg-transparent border border-green-900 focus:border-green-500 text-white placeholder-gray-600 rounded-lg px-4 py-3 outline-none transition-colors"
+          className="bg-transparent border border-green-900 focus:border-primary text-white placeholder-gray-600 rounded-lg px-4 py-3 outline-none transition-colors"
         />
 
         <input
@@ -63,7 +61,7 @@ const Login = () => {
           value={formData.password}
           onChange={handleChange}
           required
-          className="bg-transparent border border-green-900 focus:border-green-500 text-white placeholder-gray-600 rounded-lg px-4 py-3 outline-none transition-colors"
+          className="bg-transparent border border-green-900 focus:border-primary text-white placeholder-gray-600 rounded-lg px-4 py-3 outline-none transition-colors"
         />
 
         {error && (
@@ -80,7 +78,7 @@ const Login = () => {
 
         <p className="text-gray-600 text-sm text-center">
           Don't have an account?{' '}
-          <Link to="/register" className="text-green-500 hover:text-green-400">
+          <Link to="/register" className="text-primary hover:text-green-400">
             Create one
           </Link>
         </p>
