@@ -10,7 +10,12 @@ export interface Profile {
 export interface Stage {
   title: string
   description: string
-  images: string[]
+  images: TripImage[]
+}
+
+export interface TripImage {
+    url: string
+    caption: string
 }
 
 export interface Trip {
@@ -19,9 +24,11 @@ export interface Trip {
   title: string
   description: string
   cover_image_url: string
+  images: TripImage[] 
   stages: Stage[]
   latitude: number
   longitude: number
+  date: string | null
   created_at: string
 }
 

@@ -58,7 +58,7 @@ const Profile = () => {
   // Càlcul de flags — suma total de stages de tots els viatges
   // TODO: implementar correctament quan la lògica de stages estigui feta
   const totalFlags = trips.reduce(
-    (acc, trip) => acc + (trip.stages?.length ?? 0),
+    (acc, trip) => acc + 1 + (trip.stages?.length ?? 0),
     0,
   );
 
@@ -148,8 +148,8 @@ const Profile = () => {
                 <div className="flex-1 min-w-0">
                   <p className="text-white font-bold truncate">{trip.title}</p>
                   <p className="text-gray-600 text-xs mt-1">
-                    {trip.stages?.length ?? 0}{" "}
-                    {trip.stages?.length === 1 ? "flag" : "flags"}
+                    {1 + (trip.stages?.length ?? 0)}{" "}
+                    {1 + (trip.stages?.length ?? 0) === 1 ? "flag" : "flags"}
                   </p>
                 </div>
 
