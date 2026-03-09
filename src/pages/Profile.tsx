@@ -6,6 +6,7 @@ import { useAuth } from "../context/AuthContext";
 import { getProfile, getTripsByUser } from "../lib/profile.api";
 import Avatar from "../components/ui/Avatar";
 import Button from "../components/ui/Button";
+import TripCard from '../components/ui/TripCard'
 import type { Profile as ProfileType, Trip } from "../types";
 
 const Profile = () => {
@@ -126,43 +127,8 @@ const Profile = () => {
         ) : (
           <div className="flex flex-col gap-3">
             {trips.map((trip) => (
-              <div
-                key={trip.id}
-                onClick={() => navigate(`/trip/${trip.id}`)}
-                className="flex items-center gap-4 bg-gray-900 rounded-xl overflow-hidden border border-gray-800 hover:border-primary transition-colors cursor-pointer p-2"
-              >
-                <div className="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-black">
-                  {trip.cover_image_url ? (
-                    <img
-                      src={trip.cover_image_url}
-                      alt={trip.title}
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center">
-                      <span className="text-2xl">🚩</span>
-                    </div>
-                  )}
-                </div>
-
-                <div className="flex-1 min-w-0">
-                  <p className="text-white font-bold truncate">{trip.title}</p>
-                  <p className="text-gray-600 text-xs mt-1">
-                    {1 + (trip.stages?.length ?? 0)}{" "}
-                    {1 + (trip.stages?.length ?? 0) === 1 ? "flag" : "flags"}
-                  </p>
-                </div>
-
-                {/* Bombeta dreta */}
-                {/* TODO: lògica real de guardat al Dia 10 */}
-                <button
-                  onClick={(e) => e.stopPropagation()}
-                  className="text-2xl px-2 shrink-0"
-                >
-                  💡
-                </button>
-              </div>
-            ))}
+  <TripCard key={trip.id} trip={trip} />
+))}
           </div>
         )}
       </div>
