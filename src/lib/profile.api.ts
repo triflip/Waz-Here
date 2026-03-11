@@ -23,6 +23,21 @@ export const getTripsByUser = async (userId: string): Promise<Trip[]> => {
   return data
 }
 
+export const updateProfile = async (
+  userId: string,
+  updates: Partial<Pick<Profile, 'full_name' | 'city' | 'description' | 'avatar_url'>>
+): Promise<Profile> => {
+  const { data, error } = await supabase
+    .from('profile')
+    .update(updates)
+    .eq('id', userId)
+    .select()
+    .single()
+
+  if (error) throw error
+  return data
+}
+
 
 
 
