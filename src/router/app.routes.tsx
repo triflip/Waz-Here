@@ -7,12 +7,11 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import WazMap from "../pages/WazMap";
 import TripDetail from "../pages/TripDetail";
-
-import MyWorld from "../pages/MyWorld";
 import Profile from "../pages/Profile";
 import AddFlag from "../pages/AddFlag";
 import EditTrip from "../pages/EditTrip";
 import Ideas from "../pages/Ideas";
+import Settings from "../pages/Settings";
 import Layout from "../components/layout/Layout";
 
 const AppRoutes = () => {
@@ -27,14 +26,6 @@ const AppRoutes = () => {
             <Route path="/waz-map" element={<WazMap />} />
             <Route path="/trip/:id" element={<TripDetail />} />
 
-            <Route
-              path="/my-world"
-              element={
-                <ProtectedRoute>
-                  <MyWorld />
-                </ProtectedRoute>
-              }
-            />
             <Route
               path="/profile/:id"
               element={
@@ -64,6 +55,14 @@ const AppRoutes = () => {
               element={
                 <ProtectedRoute>
                   <Ideas />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/settings"
+              element={
+                <ProtectedRoute>
+                  <Settings />
                 </ProtectedRoute>
               }
             />

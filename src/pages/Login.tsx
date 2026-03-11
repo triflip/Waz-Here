@@ -1,4 +1,3 @@
-// src/pages/Login.tsx
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { loginUser } from '../lib/auth.api'
@@ -23,8 +22,8 @@ const Login = () => {
     setError(null)
 
     try {
-      await loginUser(formData.email, formData.password)
-      navigate('/profile/${user.id}') 
+      const user = await loginUser(formData.email, formData.password)
+      navigate(`/profile/${user.id}`) 
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Login error')
     } finally {

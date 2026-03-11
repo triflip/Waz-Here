@@ -25,3 +25,13 @@ export const getTrip = async (tripId: string): Promise<Trip> => {
     if (!data) throw new Error('Trip not found')
     return data
 }
+
+export const getAllTrips = async (): Promise<Trip[]> => {
+  const { data, error } = await supabase
+    .from('trips')
+    .select('*')
+    .order('created_at', { ascending: false })
+
+  if (error) throw error
+  return data || []
+}

@@ -1,4 +1,4 @@
 const EditTrip = () => {
-  return <div>EditTrip</div>
+  return <div>Coming soon</div>
 }
 export default EditTrip

@@ -1,12 +1,16 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Globe from 'react-globe.gl'
 import { useAuth } from '../context/AuthContext'
+import { getAllTrips } from '../lib/trips.api'
+import { type GlobeInstance } from 'react-globe.gl'
+import type { Trip } from '../types'
 
 const Landing = () => {
   const { user } = useAuth()
   const navigate = useNavigate()
-  const globeRef = useRef<{ controls: () => { autoRotate: boolean; autoRotateSpeed: number } }>(null)
+  const globeRef = useRef<GlobeInstance>(null)
+  const [trips, setTrips] = useState<Trip[]>([])
 
   useEffect(() => {
     if (user) navigate(`/profile/${user.id}`)
@@ -19,9 +23,13 @@ const Landing = () => {
     }
   }, [])
 
+  useEffect(() => {
+    getAllTrips().then(setTrips).catch(() => {})
+  }, [])
+
   return (
     <div className="relative min-h-screen bg-black flex flex-col items-center justify-between py-12 overflow-hidden">
-      
+
       <div className="flex flex-col items-center z-10">
         <h1 className="text-6xl font-bold text-white tracking-widest">
           WAZ HERE
@@ -39,6 +47,26 @@ const Landing = () => {
           backgroundColor="rgba(0,0,0,0)"
           width={350}
           height={350}
+          htmlElementsData={trips}
+          htmlLat="latitude"
+          htmlLng="longitude"
+          htmlElement={() => {
+            const el = document.createElement('div')
+            el.style.pointerEvents = 'none'
+            el.innerHTML = `
+              <div style="display:flex; align-items:flex-start;">
+                <div style="width:2px; height:14px; background:#13ec49;"></div>
+                <div style="
+                  width:0; height:0;
+                  border-top:6px solid transparent;
+                  border-bottom:6px solid transparent;
+                  border-left:9px solid #13ec49;
+                  margin-top:1px;
+                "></div>
+              </div>
+            `
+            return el
+          }}
         />
       </div>
 

@@ -9,10 +9,10 @@ const Navbar = () => {
   const isActive = (path: string) => location.pathname.startsWith(path);
 
   const items = [
-    { label: "My World", icon: "🌍", path: "/my-world" },
+    { label: "Explore", icon: "🌍", path: "/waz-map" },
     { label: "Profile", icon: "👤", path: `/profile/${user?.id}` },
     { label: "", icon: "+", path: "/add-flag", isMain: true },
-    { label: "Explore", icon: "🗺️", path: "/waz-map" },
+    { label: "", icon: "💡", path: "/saved" },
     { label: "Settings", icon: "⚙️", path: "/settings" },
   ];
 

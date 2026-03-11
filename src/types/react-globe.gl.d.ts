@@ -1,18 +1,25 @@
 declare module 'react-globe.gl' {
   import { ComponentType, Ref } from 'react'
-  
-  interface GlobeInstance {
-    controls: () => {
-      autoRotate: boolean
-      autoRotateSpeed: number
-    }
+
+  export interface GlobeControls {
+    autoRotate: boolean
+    autoRotateSpeed: number
+    addEventListener: (event: string, callback: () => void) => void
+    removeEventListener: (event: string, callback: () => void) => void
   }
 
-  interface GlobeProps {
+  export interface GlobeInstance {
+    controls: () => GlobeControls
+  }
+
+  export interface GlobeProps {
     ref?: Ref<GlobeInstance>
     globeImageUrl?: string
     backgroundImageUrl?: string
     backgroundColor?: string
+    width?: number
+    height?: number
+    // Points
     pointsData?: object[]
     pointLat?: string | ((d: object) => number)
     pointLng?: string | ((d: object) => number)
@@ -20,8 +27,11 @@ declare module 'react-globe.gl' {
     pointAltitude?: number
     pointRadius?: number
     onPointClick?: (point: object) => void
-    width?: number
-    height?: number
+    // HTML markers
+    htmlElementsData?: object[]
+    htmlLat?: string | ((d: object) => number)
+    htmlLng?: string | ((d: object) => number)
+    htmlElement?: (d: object) => HTMLElement
   }
 
   const Globe: ComponentType<GlobeProps>
