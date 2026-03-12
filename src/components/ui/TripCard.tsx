@@ -1,23 +1,39 @@
-// src/components/ui/TripCard.tsx
-
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../../context/AuthContext'
+import { isIdeaSaved, toggleIdea } from '../../lib/ideas.api'
 import type { Trip } from '../../types'
+import { Lightbulb } from 'lucide-react'
 
 interface TripCardProps {
   trip: Trip
-  showBulb?: boolean  // mostrem la bombeta o no
+  showBulb?: boolean
 }
 
 const TripCard = ({ trip, showBulb = true }: TripCardProps) => {
   const navigate = useNavigate()
+  const { user } = useAuth()
   const flagCount = 1 + (trip.stages?.length ?? 0)
+  const [saved, setSaved] = useState(false)
+  const isOwnTrip = user?.id === trip.user_id
+
+  useEffect(() => {
+    if (!user) return
+    isIdeaSaved(user.id, trip.id).then(setSaved)
+  }, [user, trip.id])
+
+  const handleBulb = async (e: React.MouseEvent) => {
+    e.stopPropagation()
+    if (!user) return
+    const newState = await toggleIdea(user.id, trip.id)
+    setSaved(newState)
+  }
 
   return (
     <div
       onClick={() => navigate(`/trip/${trip.id}`)}
       className="flex items-center gap-4 bg-card rounded-xl overflow-hidden border border-primary/20 hover:border-primary transition-colors cursor-pointer p-2"
     >
-      {/* Foto esquerra */}
       <div className="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-background">
         {trip.cover_image_url ? (
           <img
@@ -45,15 +61,19 @@ const TripCard = ({ trip, showBulb = true }: TripCardProps) => {
         </p>
       </div>
 
-      {/* Bombeta dreta — TODO: lògica real al Dia 10 */}
-      {showBulb && (
-        <button
-          onClick={(e) => e.stopPropagation()}
-          className="text-2xl px-2 shrink-0"
-        >
-          💡
-        </button>
-      )}
+{showBulb && !isOwnTrip && (
+  <button
+    onClick={handleBulb}
+    className="px-2 shrink-0 transition-transform active:scale-125"
+  >
+    <Lightbulb
+      size={24}
+      fill={saved ? '#facc15' : 'none'}
+      stroke={saved ? '#facc15' : 'white'}
+      strokeWidth={1.5}
+    />
+  </button>
+)}
     </div>
   )
 }

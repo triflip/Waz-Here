@@ -12,7 +12,7 @@ const Navbar = () => {
     { label: "Explore", icon: "🌍", path: "/waz-map" },
     { label: "Profile", icon: "👤", path: `/profile/${user?.id}` },
     { label: "", icon: "+", path: "/add-flag", isMain: true },
-    { label: "", icon: "💡", path: "/saved" },
+    { label: "Ideas", icon: "💡", path: "/ideas" },
     { label: "Settings", icon: "⚙️", path: "/settings" },
   ];
 

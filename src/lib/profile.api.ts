@@ -38,6 +38,28 @@ export const updateProfile = async (
   return data
 }
 
+export const getInspiredCount = async (userId: string): Promise<number> => {
+
+  const { data: trips, error: tripsError } = await supabase
+    .from('trips')
+    .select('id')
+    .eq('user_id', userId)
+
+  if (tripsError) throw tripsError
+  if (!trips || trips.length === 0) return 0
+
+  const tripIds = trips.map((t) => t.id)
+
+
+  const { count, error } = await supabase
+    .from('ideas')
+    .select('*', { count: 'exact', head: true })
+    .in('trip_id', tripIds)
+
+  if (error) throw error
+  return count ?? 0
+}
+
 
 
 

@@ -5,6 +5,8 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { getTrip } from '../lib/trips.api'
 import { getProfile } from '../lib/profile.api'
+import { isIdeaSaved, toggleIdea } from '../lib/ideas.api'
+import { Lightbulb } from 'lucide-react'
 import Avatar from '../components/ui/Avatar'
 import type { Trip, Profile, TripImage } from '../types'
 
@@ -18,6 +20,7 @@ const TripDetail = () => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [activePhoto, setActivePhoto] = useState(0)
+  const [saved, setSaved] = useState(false)
   const [lightbox, setLightbox] = useState<{
     photos: TripImage[]
     index: number
@@ -41,6 +44,17 @@ const TripDetail = () => {
     }
     loadTrip()
   }, [id])
+
+  useEffect(() => {
+    if (!user || !trip || isOwnTrip) return
+    isIdeaSaved(user.id, trip.id).then(setSaved)
+  }, [user, trip, isOwnTrip])
+
+  const handleBulb = async () => {
+    if (!user || !trip || isOwnTrip) return
+    const newState = await toggleIdea(user.id, trip.id)
+    setSaved(newState)
+  }
 
   if (loading) return (
     <div className="min-h-screen bg-background flex items-center justify-center">
@@ -71,7 +85,6 @@ const TripDetail = () => {
 
   const flagCount = 1 + (trip.stages?.length ?? 0)
 
-  // Lightbox — modal de foto en gran
   const LightboxModal = () => {
     if (!lightbox) return null
     const photo = lightbox.photos[lightbox.index]
@@ -81,15 +94,11 @@ const TripDetail = () => {
         className="fixed inset-0 bg-black/95 z-50 flex flex-col items-center justify-center px-4"
         onClick={() => setLightbox(null)}
       >
-        {/* Botó tancar */}
         <button
           className="absolute top-4 right-4 w-9 h-9 bg-white/10 rounded-full flex items-center justify-center text-white text-xl"
           onClick={() => setLightbox(null)}
-        >
-          ×
-        </button>
+        >×</button>
 
-        {/* Foto */}
         <img
           src={photo.url}
           alt={photo.caption || ''}
@@ -97,14 +106,10 @@ const TripDetail = () => {
           onClick={(e) => e.stopPropagation()}
         />
 
-        {/* Caption */}
         {photo.caption && (
-          <p className="text-gray-400 text-sm mt-4 text-center">
-            {photo.caption}
-          </p>
+          <p className="text-gray-400 text-sm mt-4 text-center">{photo.caption}</p>
         )}
 
-        {/* Navegació */}
         {lightbox.photos.length > 1 && (
           <div className="flex items-center gap-6 mt-6">
             <button
@@ -115,9 +120,7 @@ const TripDetail = () => {
                 )
               }}
               className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-white text-xl"
-            >
-              ‹
-            </button>
+            >‹</button>
             <span className="text-gray-500 text-xs">
               {lightbox.index + 1} / {lightbox.photos.length}
             </span>
@@ -129,13 +132,10 @@ const TripDetail = () => {
                 )
               }}
               className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-white text-xl"
-            >
-              ›
-            </button>
+            >›</button>
           </div>
         )}
 
-        {/* Indicadors */}
         {lightbox.photos.length > 1 && (
           <div className="flex gap-1.5 mt-4">
             {lightbox.photos.map((_, i) => (
@@ -166,7 +166,6 @@ const TripDetail = () => {
           <span className="text-gray-600 text-sm">→</span>
         </div>
 
-      {/* Carrusel de fotos */}
       <div className="relative w-full aspect-square bg-card">
         {allPhotos.length > 0 ? (
           <>
@@ -217,12 +216,21 @@ const TripDetail = () => {
           className="absolute top-4 left-4 w-9 h-9 bg-black/50 rounded-full flex items-center justify-center text-white backdrop-blur-sm"
         >←</button>
 
-        <button className="absolute top-4 right-4 w-9 h-9 bg-black/50 rounded-full flex items-center justify-center backdrop-blur-sm text-xl">
-          💡
-        </button>
+        {!isOwnTrip && (
+          <button
+            onClick={handleBulb}
+            className="absolute top-4 right-4 w-9 h-9 bg-black/50 rounded-full flex items-center justify-center backdrop-blur-sm transition-transform active:scale-125"
+          >
+            <Lightbulb
+              size={20}
+              fill={saved ? '#facc15' : 'none'}
+              stroke={saved ? '#facc15' : 'white'}
+              strokeWidth={1.5}
+            />
+          </button>
+        )}
       </div>
 
-      {/* Info principal */}
       <div className="px-6 pt-6">
         <div className="flex items-start justify-between gap-4">
           <h1 className="text-2xl font-black uppercase italic leading-tight flex-1">
@@ -246,7 +254,6 @@ const TripDetail = () => {
           </p>
         )}
 
-        {/* Autor */}
 
         {isOwnTrip && (
           <div className="flex gap-3 mt-4">
@@ -263,7 +270,6 @@ const TripDetail = () => {
         )}
       </div>
 
-      {/* Stages */}
       {trip.stages && trip.stages.length > 0 && (
         <div className="px-6 mt-8">
           <h2 className="text-xs font-black text-primary uppercase tracking-widest mb-4">
@@ -317,9 +323,7 @@ const TripDetail = () => {
         </div>
       )}
 
-      {/* Lightbox */}
       <LightboxModal />
-
     </div>
   )
 }

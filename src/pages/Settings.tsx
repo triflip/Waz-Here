@@ -106,13 +106,17 @@ const Settings = () => {
 
   return (
     <div className="min-h-screen bg-background text-white">
-      <div className="px-6 pt-12 pb-6">
-        <h1 className="text-2xl font-black uppercase italic tracking-tight">
-          Settings
-        </h1>
-      </div>
-
-      <div className="px-6 flex flex-col gap-6 pb-32">
+      <div className="px-6 pt-12 pb-6 flex items-center justify-between">
+  <h1 className="text-2xl font-black uppercase italic tracking-tight">
+    Settings
+  </h1>
+  <button
+    onClick={handleLogout}
+    className="w-9 h-9 rounded-full border border-red-500/30 text-red-500 hover:bg-red-500/10 transition-colors flex items-center justify-center text-xs font-black"
+  >
+    logout
+  </button>
+</div>
 
         <div className="flex flex-col items-center gap-3">
           <label className="cursor-pointer relative">
@@ -177,19 +181,12 @@ const Settings = () => {
         </div>
 
         {error && <p className="text-red-500 text-sm text-center">{error}</p>}
-        {success && <p className="text-primary text-sm text-center font-bold">Profile updated! ✓</p>}
+        {success && <p className="text-primary text-sm text-center font-bold">Profile updated!  ✓</p>}
 
         <Button variant="primary" fullWidth onClick={handleSave} disabled={saving}>
           {saving ? 'Saving...' : 'Save changes'}
         </Button>
 
-        <div className="border-t border-gray-900 my-2" />
-
-        <Button variant="danger" fullWidth onClick={handleLogout}>
-          Log out
-        </Button>
-
-      </div>
     </div>
   )
 }
