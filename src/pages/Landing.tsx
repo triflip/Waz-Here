@@ -12,9 +12,9 @@ const Landing = () => {
   const globeRef = useRef<GlobeInstance>(null)
   const [trips, setTrips] = useState<Trip[]>([])
 
-  useEffect(() => {
-    if (user) navigate(`/profile/${user.id}`)
-  }, [user, navigate])
+  // useEffect(() => {
+  //   if (user) navigate(`/profile/${user.id}`)
+  // }, [user, navigate])
 
   useEffect(() => {
     if (globeRef.current) {

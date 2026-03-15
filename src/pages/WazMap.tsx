@@ -162,20 +162,20 @@ const WazMap = () => {
   )
 
   return (
-    <div className="fixed inset-0 bg-background">
-      <Globe
-        ref={globeEl}
-        width={dimensions.width}
-        height={dimensions.height * 0.70}
-        globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
-        backgroundColor="#050d05"
-        htmlElementsData={trips}
-        htmlLat="latitude"
-        htmlLng="longitude"
-        htmlElement={(d) => createMarkerElement(d as TripWithAuthor)}
-      />
-    </div>
-  )
+  <div className="fixed inset-0 bg-background flex items-center justify-center">
+    <Globe
+      ref={globeEl}
+      width={Math.min(dimensions.width, dimensions.height * 0.85)}
+      height={Math.min(dimensions.width, dimensions.height * 0.85)}
+      globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
+      backgroundColor="#050d05"
+      htmlElementsData={trips}
+      htmlLat="latitude"
+      htmlLng="longitude"
+      htmlElement={(d) => createMarkerElement(d as TripWithAuthor)}
+    />
+  </div>
+)
 }
 
 export default WazMap
