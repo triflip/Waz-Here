@@ -38,3 +38,7 @@ export interface Idea {
   trip_id: string
   created_at: string
 }
+
+export interface TripWithAuthor extends Trip {
+  profile: Pick<Profile, 'full_name' | 'avatar_url' | 'city'>
+}

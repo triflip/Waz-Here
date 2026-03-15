@@ -1,5 +1,5 @@
 import { supabase } from './supabase'
-import type { Trip } from '../types'
+import type { Trip, TripWithAuthor } from '../types'
 
 export const createTrip = async (
     trip: Omit<Trip, 'id' | 'created_at'>
@@ -34,4 +34,14 @@ export const getAllTrips = async (): Promise<Trip[]> => {
 
   if (error) throw error
   return data || []
+}
+
+export const getAllTripsWithAuthors = async (): Promise<TripWithAuthor[]> => {
+  const { data, error } = await supabase
+    .from('trips')
+    .select('*, profile(*)')
+    .order('created_at', { ascending: false })
+
+  if (error) throw error
+  return (data || []) as TripWithAuthor[]
 }
