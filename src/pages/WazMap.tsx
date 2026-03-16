@@ -46,6 +46,9 @@ const WazMap = () => {
     const controls = globeEl.current.controls()
     controls.autoRotate = true
     controls.autoRotateSpeed = 0.5
+      
+    const isMobile = window.innerWidth < 768
+  globeEl.current.pointOfView({ altitude: isMobile ? 3.5 : 1.8 })
 
     const stopRotation = () => {
       controls.autoRotate = false
@@ -156,24 +159,41 @@ const WazMap = () => {
   }
 
   if (loading) return (
-    <div className="min-h-screen bg-background flex items-center justify-center">
-      <p className="text-primary tracking-widest animate-pulse">Loading...</p>
-    </div>
-  )
+  <div className="min-h-screen bg-background flex items-center justify-center">
+    <p className="text-primary tracking-widest animate-pulse">Loading...</p>
+  </div>
+)
 
-  return (
-  <div className="fixed inset-0 bg-background flex items-center justify-center">
+return (
+  <div style={{
+    position: 'fixed',
+    top: 0, left: 0,
+    width: '100vw',
+    height: '100vh',
+    zIndex: 10,
+    backgroundImage: 'url(//unpkg.com/three-globe/example/img/night-sky.png)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  }}>
     <Globe
       ref={globeEl}
-      width={Math.min(dimensions.width, dimensions.height * 0.85)}
-      height={Math.min(dimensions.width, dimensions.height * 0.85)}
+      width={dimensions.width}
+      height={dimensions.height}
       globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
-      backgroundColor="#050d05"
+      backgroundColor="rgba(0,0,0,0)"
       htmlElementsData={trips}
       htmlLat="latitude"
       htmlLng="longitude"
       htmlElement={(d) => createMarkerElement(d as TripWithAuthor)}
     />
+
+    {/* Botó back */}
+    <button
+      onClick={() => navigate(-1)}
+      className="absolute top-4 left-4 z-50 w-10 h-10 bg-green-500 hover:bg-green-400 border border-white/10 rounded-full flex items-center justify-center text-white backdrop-blur-sm transition-colors"
+    >
+      ←
+    </button>
   </div>
 )
 }

@@ -2,11 +2,12 @@ declare module 'react-globe.gl' {
   import { ComponentType, Ref } from 'react'
 
   export interface GlobeControls {
-    autoRotate: boolean
-    autoRotateSpeed: number
-    addEventListener: (event: string, callback: () => void) => void
-    removeEventListener: (event: string, callback: () => void) => void
-  }
+  autoRotate: boolean
+  autoRotateSpeed: number
+  enableZoom: boolean
+  addEventListener: (event: string, callback: () => void) => void
+  removeEventListener: (event: string, callback: () => void) => void
+}
 
   export interface GlobeInstance {
     controls: () => GlobeControls
