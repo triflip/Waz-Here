@@ -1,6 +1,7 @@
 import { supabase } from './supabase'
 import type { Profile, Trip } from '../types'
 
+
 export const getProfile = async (userId: string): Promise<Profile> => {
     const { data, error } = await supabase
     .from('profile')

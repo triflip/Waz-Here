@@ -9,6 +9,7 @@ import { isIdeaSaved, toggleIdea } from "../lib/ideas.api";
 import { Lightbulb } from "lucide-react";
 import Avatar from "../components/ui/Avatar";
 import type { Trip, Profile, TripImage } from "../types";
+import { formatDate } from '../lib/utils'
 
 const TripDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -74,16 +75,6 @@ const TripDetail = () => {
     { url: trip.cover_image_url, caption: "" },
     ...(trip.images || []),
   ].filter((photo) => photo.url);
-
-  const formatDate = (dateStr: string) => {
-    const date = new Date(dateStr);
-    const year = date.getFullYear();
-    const month = date.toLocaleString("en", { month: "long" });
-    const day = date.getDate();
-    if (date.getMonth() === 0 && day === 1) return `${year}`;
-    if (day === 1) return `${month} ${year}`;
-    return `${month} ${day}, ${year}`;
-  };
 
   const flagCount = 1 + (trip.stages?.length ?? 0);
 
