@@ -15,14 +15,11 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="min-h-screen bg-background md:flex">
 
-      {/* Sidebar desktop — no al WazMap */}
       {showDesktopSidebar && (
         <div className="hidden md:block">
           <Navbar />
         </div>
       )}
-
-      {/* Contingut */}
       <main className={`
         flex-1
         ${showNavbar ? 'pb-20 md:pb-0' : ''}
@@ -31,7 +28,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         {children}
       </main>
 
-      {/* Navbar mòbil */}
       {showNavbar && (
         <div className="md:hidden">
           <Navbar />

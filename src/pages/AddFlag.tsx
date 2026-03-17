@@ -1,5 +1,4 @@
 // src/pages/AddFlag.tsx
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
@@ -233,7 +232,6 @@ const AddFlag = () => {
     setError(null);
 
     try {
-      // 1 — Pugem la foto de portada
       let coverUrl = "";
       if (formData.coverImageFile) {
         coverUrl = await uploadImage(
@@ -243,14 +241,12 @@ const AddFlag = () => {
         );
       }
 
-      // 2 — Pugem les fotos addicionals amb els seus captions
       const additionalImages: { url: string; caption: string }[] = [];
       for (const image of formData.images) {
         const url = await uploadImage("trip-images", image.file, user.id);
         additionalImages.push({ url, caption: image.caption });
       }
 
-      // 3 — Creem el viatge a Supabase
       await createTrip({
         user_id: user.id,
         title: formData.title,
@@ -279,7 +275,6 @@ const AddFlag = () => {
           Add Flag 🚩
         </h1>
 
-        {/* Indicador de passos */}
         <div className="flex items-center gap-2 mt-4">
           {STEPS.map((step, index) => (
             <div key={step} className="flex items-center gap-2">
@@ -308,7 +303,6 @@ const AddFlag = () => {
         </div>
       </div>
 
-      {/* Contingut */}
       <div className="px-6 pb-32">
         {/* PAS 1 — Info */}
         {currentStep === 1 && (
@@ -415,7 +409,6 @@ const AddFlag = () => {
           </div>
         )}
 
-        {/* PAS 2 — Location */}
         {currentStep === 2 && (
           <div className="flex flex-col gap-4">
             <p className="text-gray-400 text-sm">
@@ -440,7 +433,6 @@ const AddFlag = () => {
           </div>
         )}
 
-        {/* PAS 3 — Photos */}
         {currentStep === 3 && (
           <div className="flex flex-col gap-6">
             <div>
@@ -529,7 +521,6 @@ const AddFlag = () => {
           </div>
         )}
 
-        {/* PAS 4 — Stages */}
         {currentStep === 4 && (
           <div className="flex flex-col gap-4">
             <p className="text-gray-400 text-sm">
@@ -558,7 +549,6 @@ const AddFlag = () => {
                 rows={3}
                 className="w-full bg-background border border-gray-800 focus:border-primary text-white placeholder-gray-600 rounded-xl px-4 py-3 outline-none transition-colors resize-none"
               />
-              {/* Dins del div del formulari nova etapa, després del textarea */}
               <div>
                 <label className="text-xs font-black text-primary uppercase tracking-widest">
                   Stage photos
@@ -635,12 +625,10 @@ const AddFlag = () => {
           </div>
         )}
 
-        {/* Error */}
         {error && (
           <p className="text-red-500 text-sm text-center mt-4">{error}</p>
         )}
 
-        {/* Navegació */}
         <div className="flex gap-3 mt-8">
           {currentStep > 1 && (
             <Button variant="danger" onClick={handleBack}>

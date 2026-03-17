@@ -59,10 +59,8 @@ const Profile = () => {
   return (
     <div className="min-h-screen bg-background text-white">
 
-      {/* Capçalera */}
 <div className="flex flex-col items-center pt-12 pb-6 px-6 md:flex-row md:items-center md:gap-8 md:pt-10">
 
-  {/* Avatar — més gran a desktop */}
   <div className="shrink-0">
     <div className="md:hidden">
       <Avatar url={profile.avatar_url} name={profile.full_name} size="lg" />
@@ -78,7 +76,6 @@ const Profile = () => {
     </div>
   </div>
 
-  {/* Info centre */}
   <div className="flex flex-col items-center md:items-start mt-4 md:mt-0 flex-1">
     <h1 className="text-xl font-bold tracking-wide">{profile.full_name}</h1>
     <p className="text-primary text-sm mt-1 flex items-center gap-1">
@@ -91,7 +88,6 @@ const Profile = () => {
       </p>
     )}
 
-    {/* Comptadors — fila a mòbil */}
     <div className="flex gap-4 mt-6 w-full md:hidden">
       <div className="flex-1 flex flex-col items-center border border-primary/30 rounded-xl px-5 py-3 bg-card shadow-[0_0_15px_rgba(19,236,73,0.1)]">
         <span className="text-primary text-xl font-bold">{trips.length}</span>
@@ -108,7 +104,7 @@ const Profile = () => {
     </div>
   </div>
 
-  {/* Comptadors — columna a desktop */}
+  
 <div className="hidden md:flex flex-col gap-2 shrink-0">
   <div className="flex items-center gap-3 border border-primary/30 rounded-xl px-5 py-2 bg-card shadow-[0_0_15px_rgba(19,236,73,0.1)]">
     <span className="text-primary text-2xl font-bold w-8 text-right">{trips.length}</span>
@@ -135,7 +131,7 @@ const Profile = () => {
             {isOwnProfile && (
               <div className="mt-4">
                 <Button variant="secondary" onClick={() => navigate("/add-flag")}>
-                  Add your first flag 🚩
+                  Add your first flag 
                 </Button>
               </div>
             )}

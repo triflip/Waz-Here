@@ -48,7 +48,6 @@ const TripCard = ({ trip, showBulb = true }: TripCardProps) => {
         )}
       </div>
 
-      {/* Info centre */}
       <div className="flex-1 min-w-0">
         <p className="text-white font-black truncate">{trip.title}</p>
         {trip.date && (

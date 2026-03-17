@@ -1,5 +1,3 @@
-// src/pages/TripDetail.tsx
-
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";

@@ -78,7 +78,7 @@ const WazMap = () => {
     el.style.cursor = 'pointer'
     el.style.position = 'relative'
 
-    // Avatar de l'autor — inicial o foto
+   
     const authorAvatar = trip.profile?.avatar_url
       ? `<img src="${trip.profile.avatar_url}" style="width:24px; height:24px; border-radius:50%; object-fit:cover; border:1px solid #13ec49;" />`
       : `<div style="width:24px; height:24px; border-radius:50%; background:#0d1a0d; border:1px solid #13ec49; display:flex; align-items:center; justify-content:center; font-size:10px; color:white; font-weight:800;">${trip.profile?.full_name?.charAt(0) ?? '?'}</div>`
@@ -135,13 +135,31 @@ const WazMap = () => {
 
     const tooltip = el.querySelector('.waz-tooltip') as HTMLElement
 
-    el.addEventListener('mouseenter', () => {
-      tooltip.style.display = 'block'
-      if (globeEl.current) {
-        globeEl.current.controls().autoRotate = false
-        if (timeoutRef.current) clearTimeout(timeoutRef.current)
-      }
-    })
+   el.addEventListener('mouseenter', () => {
+  const rect = el.getBoundingClientRect()
+  const isNearTop = rect.top < 200
+
+  // Posicionem el tooltip de forma fixa a la pantalla
+  tooltip.style.position = 'fixed'
+  tooltip.style.left = `${rect.left - 60}px`
+  
+  if (isNearTop) {
+    tooltip.style.top = `${rect.bottom + 8}px`
+    tooltip.style.bottom = 'auto'
+  } else {
+    tooltip.style.bottom = `${window.innerHeight - rect.top + 8}px`
+    tooltip.style.top = 'auto'
+  }
+  
+  tooltip.style.transform = 'none'
+  tooltip.style.zIndex = '99999'
+  tooltip.style.display = 'block'
+
+  if (globeEl.current) {
+    globeEl.current.controls().autoRotate = false
+    if (timeoutRef.current) clearTimeout(timeoutRef.current)
+  }
+})
 
     el.addEventListener('mouseleave', () => {
       tooltip.style.display = 'none'
@@ -187,10 +205,9 @@ return (
       htmlElement={(d) => createMarkerElement(d as TripWithAuthor)}
     />
 
-    {/* Botó back */}
     <button
       onClick={() => navigate(-1)}
-      className="absolute top-4 left-4 z-50 w-10 h-10 bg-green-500 hover:bg-green-400 border border-white/10 rounded-full flex items-center justify-center text-white backdrop-blur-sm transition-colors"
+      className="absolute top-4 left-4 z-50 w-10 h-10 bg-black hover:bg-green-500 border border-green-500 rounded-full flex items-center justify-center text-white backdrop-blur-sm transition-colors"
     >
       ←
     </button>
