@@ -1,20 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Globe from 'react-globe.gl'
-import { useAuth } from '../context/AuthContext'
 import { getAllTrips } from '../lib/trips.api'
 import { type GlobeInstance } from 'react-globe.gl'
 import type { Trip } from '../types'
 
 const Landing = () => {
-  const { user } = useAuth()
   const navigate = useNavigate()
   const globeRef = useRef<GlobeInstance>(null)
   const [trips, setTrips] = useState<Trip[]>([])
-
-  // useEffect(() => {
-  //   if (user) navigate(`/profile/${user.id}`)
-  // }, [user, navigate])
 
   useEffect(() => {
     if (globeRef.current) {

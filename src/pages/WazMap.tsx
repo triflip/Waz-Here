@@ -78,7 +78,6 @@ const WazMap = () => {
     el.style.cursor = 'pointer'
     el.style.position = 'relative'
 
-    // Avatar de l'autor — inicial o foto
     const authorAvatar = trip.profile?.avatar_url
       ? `<img src="${trip.profile.avatar_url}" style="width:24px; height:24px; border-radius:50%; object-fit:cover; border:1px solid #13ec49;" />`
       : `<div style="width:24px; height:24px; border-radius:50%; background:#0d1a0d; border:1px solid #13ec49; display:flex; align-items:center; justify-content:center; font-size:10px; color:white; font-weight:800;">${trip.profile?.full_name?.charAt(0) ?? '?'}</div>`
