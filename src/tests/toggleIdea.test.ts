@@ -73,6 +73,6 @@ describe('toggleIdea', () => {
    } as any)
 
     const result = await toggleIdea('user-123', 'trip-456')
-    expect(result).toBe(false) // Ha desguardat → retorna false
+    expect(result).toBe(false)
   })
 })

@@ -13,10 +13,17 @@ const Avatar = ({url, name, size = 'md'}: AvatarProps) => {
         lg: 'w-24 h-24 text-2xl'
     }
 
-    const initial =name ? name.charAt(0).toUpperCase() :'🚩'
+    const initial =name ? name.charAt(0).toUpperCase() :'😊'
 
     return (
-      <div className={`${sizes[size]} rounded-full border-2 border-primary overflow-hidden bg-gray-900 flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(19,236,73,0.35)]`}>
+      <div className={`${sizes[size]} 
+      rounded-full border-2
+      border-primary overflow-hidden 
+      bg-gray-900 
+      flex items-center 
+      justify-center
+       shrink-0 
+       shadow-[0_0_20px_rgba(19,236,73,0.35)]`}>
       {url ? (
         <img
           src={url}

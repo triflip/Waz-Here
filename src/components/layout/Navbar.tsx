@@ -18,7 +18,6 @@ const Navbar = () => {
 
   return (
     <>
-      {/* MOBILE — bottom nav */}
       <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-black border-t border-gray-900 px-2 py-2 z-50">
         <div className="flex items-center justify-around max-w-md mx-auto">
           {items.map((item) =>
@@ -46,7 +45,6 @@ const Navbar = () => {
         </div>
       </nav>
 
-     {/* DESKTOP — sidebar vertical */}
 <nav className="hidden md:flex flex-col items-center gap-14 fixed left-0 top-0 bottom-0 w-16 bg-background border-r border-gray-900 pt-58 z-50">
         {items.map((item) =>
           item.isMain ? (

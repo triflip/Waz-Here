@@ -45,7 +45,7 @@ const Register = () => {
         WAZ HERE
       </h1>
       <p className="text-primary text-xs tracking-[0.3em] uppercase mb-10">
-        Plant your flag. Own your journey.
+        Plant your flag
       </p>
 
       <form onSubmit={handleSubmit} className="w-full max-w-sm flex flex-col gap-4">

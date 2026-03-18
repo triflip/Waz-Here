@@ -127,20 +127,45 @@ const WazMap = () => {
         style="width:100%; height:80px; object-fit:cover; border-radius:8px; display:block;"
       />
     ` : `
-      <div style="width:100%; height:80px; background:#050d05; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:24px;">🚩</div>
+      <div style="width:100%; height:80px; background:#050d05; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:24px;"></div>
     `}
   </div>
 `
 
     const tooltip = el.querySelector('.waz-tooltip') as HTMLElement
 
-    el.addEventListener('mouseenter', () => {
-      tooltip.style.display = 'block'
-      if (globeEl.current) {
-        globeEl.current.controls().autoRotate = false
-        if (timeoutRef.current) clearTimeout(timeoutRef.current)
-      }
-    })
+   el.addEventListener('mouseenter', () => {
+  const rect = el.getBoundingClientRect()
+  const tooltipWidth = 150
+
+  const leftPos = rect.left + (rect.width / 2) - (tooltipWidth / 2)
+  if (leftPos + tooltipWidth > window.innerWidth - 10) {
+    tooltip.style.left = 'auto'
+    tooltip.style.right = '0px'
+    tooltip.style.transform = 'none'
+  } else if (leftPos < 10) {
+    tooltip.style.left = '0px'
+    tooltip.style.transform = 'none'
+  } else {
+    tooltip.style.left = '50%'
+    tooltip.style.transform = 'translateX(-50%)'
+  }
+
+  if (rect.top < 200) {
+    tooltip.style.bottom = 'auto'
+    tooltip.style.top = '28px'
+  } else {
+    tooltip.style.top = 'auto'
+    tooltip.style.bottom = '28px'
+  }
+
+  tooltip.style.display = 'block'
+
+  if (globeEl.current) {
+    globeEl.current.controls().autoRotate = false
+    if (timeoutRef.current) clearTimeout(timeoutRef.current)
+  }
+})
 
     el.addEventListener('mouseleave', () => {
       tooltip.style.display = 'none'
@@ -186,7 +211,6 @@ return (
       htmlElement={(d) => createMarkerElement(d as TripWithAuthor)}
     />
 
-    {/* Botó back */}
     <button
       onClick={() => navigate(-1)}
       className="absolute top-4 left-4 z-50 w-10 h-10 bg-green-500 hover:bg-green-400 border border-white/10 rounded-full flex items-center justify-center text-white backdrop-blur-sm transition-colors"

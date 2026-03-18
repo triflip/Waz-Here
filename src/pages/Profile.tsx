@@ -70,7 +70,7 @@ const Profile = () => {
         <img src={profile.avatar_url} alt={profile.full_name} className="w-full h-full object-cover" />
       ) : (
         <div className="w-full h-full bg-card flex items-center justify-center text-4xl font-black text-primary">
-          {profile.full_name?.charAt(0) ?? '🚩'}
+          {profile.full_name?.charAt(0) ?? '😊'}
         </div>
       )}
     </div>
@@ -104,6 +104,7 @@ const Profile = () => {
     </div>
   </div>
 
+  
 <div className="hidden md:flex flex-col gap-2 shrink-0">
   <div className="flex items-center gap-3 border border-primary/30 rounded-xl px-5 py-2 bg-card shadow-[0_0_15px_rgba(19,236,73,0.1)]">
     <span className="text-primary text-2xl font-bold w-8 text-right">{trips.length}</span>
@@ -130,7 +131,7 @@ const Profile = () => {
             {isOwnProfile && (
               <div className="mt-4">
                 <Button variant="secondary" onClick={() => navigate("/add-flag")}>
-                  Add your first flag 🚩
+                  Add your first flag 
                 </Button>
               </div>
             )}

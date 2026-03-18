@@ -11,7 +11,7 @@ declare module 'react-globe.gl' {
 
   export interface GlobeInstance {
   controls: () => GlobeControls
-  pointOfView: (pov: { altitude?: number; lat?: number; lng?: number }) => void  // 👈 afegeix això
+  pointOfView: (pov: { altitude?: number; lat?: number; lng?: number }) => void
 }
 
   export interface GlobeProps {
