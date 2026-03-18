@@ -235,7 +235,7 @@ const TripDetail = () => {
           </>
         ) : (
           <div className="w-full h-full flex items-center justify-center">
-            <span className="text-6xl">🚩</span>
+            <span className="text-6xl">Flags</span>
           </div>
         )}
 
@@ -267,7 +267,7 @@ const TripDetail = () => {
             {trip.title}
           </h1>
           <div className="flex items-center gap-1 bg-primary/10 border border-primary/20 rounded-lg px-3 py-1.5 shrink-0">
-            <span className="text-primary text-xs">🚩</span>
+            <span className="text-primary text-xs"></span>
             <span className="text-primary text-xs font-black">{flagCount}</span>
           </div>
         </div>
@@ -339,7 +339,7 @@ const TripDetail = () => {
                 )}
                 <div className="p-4">
                   <div className="flex items-center gap-2">
-                    <span className="text-primary text-xs font-black">🚩</span>
+                    <span className="text-primary text-xs font-black"></span>
                     <p className="text-white font-black text-sm">
                       {stage.title}
                     </p>

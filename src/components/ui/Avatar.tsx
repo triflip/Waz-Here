@@ -13,7 +13,7 @@ const Avatar = ({url, name, size = 'md'}: AvatarProps) => {
         lg: 'w-24 h-24 text-2xl'
     }
 
-    const initial =name ? name.charAt(0).toUpperCase() :'🚩'
+    const initial =name ? name.charAt(0).toUpperCase() :'😊'
 
     return (
       <div className={`${sizes[size]} 

@@ -43,7 +43,7 @@ const TripCard = ({ trip, showBulb = true }: TripCardProps) => {
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center border border-primary/20 rounded-lg">
-            <span className="text-2xl">🚩</span>
+            <span className="text-2xl">Flags</span>
           </div>
         )}
       </div>

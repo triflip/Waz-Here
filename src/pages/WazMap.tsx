@@ -78,7 +78,6 @@ const WazMap = () => {
     el.style.cursor = 'pointer'
     el.style.position = 'relative'
 
-   
     const authorAvatar = trip.profile?.avatar_url
       ? `<img src="${trip.profile.avatar_url}" style="width:24px; height:24px; border-radius:50%; object-fit:cover; border:1px solid #13ec49;" />`
       : `<div style="width:24px; height:24px; border-radius:50%; background:#0d1a0d; border:1px solid #13ec49; display:flex; align-items:center; justify-content:center; font-size:10px; color:white; font-weight:800;">${trip.profile?.full_name?.charAt(0) ?? '?'}</div>`
@@ -128,7 +127,7 @@ const WazMap = () => {
         style="width:100%; height:80px; object-fit:cover; border-radius:8px; display:block;"
       />
     ` : `
-      <div style="width:100%; height:80px; background:#050d05; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:24px;">🚩</div>
+      <div style="width:100%; height:80px; background:#050d05; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:24px;"></div>
     `}
   </div>
 `
@@ -137,22 +136,29 @@ const WazMap = () => {
 
    el.addEventListener('mouseenter', () => {
   const rect = el.getBoundingClientRect()
-  const isNearTop = rect.top < 200
+  const tooltipWidth = 150
 
-  // Posicionem el tooltip de forma fixa a la pantalla
-  tooltip.style.position = 'fixed'
-  tooltip.style.left = `${rect.left - 60}px`
-  
-  if (isNearTop) {
-    tooltip.style.top = `${rect.bottom + 8}px`
-    tooltip.style.bottom = 'auto'
+  const leftPos = rect.left + (rect.width / 2) - (tooltipWidth / 2)
+  if (leftPos + tooltipWidth > window.innerWidth - 10) {
+    tooltip.style.left = 'auto'
+    tooltip.style.right = '0px'
+    tooltip.style.transform = 'none'
+  } else if (leftPos < 10) {
+    tooltip.style.left = '0px'
+    tooltip.style.transform = 'none'
   } else {
-    tooltip.style.bottom = `${window.innerHeight - rect.top + 8}px`
-    tooltip.style.top = 'auto'
+    tooltip.style.left = '50%'
+    tooltip.style.transform = 'translateX(-50%)'
   }
-  
-  tooltip.style.transform = 'none'
-  tooltip.style.zIndex = '99999'
+
+  if (rect.top < 200) {
+    tooltip.style.bottom = 'auto'
+    tooltip.style.top = '28px'
+  } else {
+    tooltip.style.top = 'auto'
+    tooltip.style.bottom = '28px'
+  }
+
   tooltip.style.display = 'block'
 
   if (globeEl.current) {
@@ -207,7 +213,7 @@ return (
 
     <button
       onClick={() => navigate(-1)}
-      className="absolute top-4 left-4 z-50 w-10 h-10 bg-black hover:bg-green-500 border border-green-500 rounded-full flex items-center justify-center text-white backdrop-blur-sm transition-colors"
+      className="absolute top-4 left-4 z-50 w-10 h-10 bg-green-500 hover:bg-green-400 border border-white/10 rounded-full flex items-center justify-center text-white backdrop-blur-sm transition-colors"
     >
       ←
     </button>

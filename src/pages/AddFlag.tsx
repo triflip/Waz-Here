@@ -271,8 +271,8 @@ const AddFlag = () => {
     <div className="min-h-screen bg-background text-white">
       {/* Capçalera */}
       <div className="px-6 pt-12 pb-6">
-        <h1 className="text-2xl font-black uppercase italic tracking-tight">
-          Add Flag 🚩
+        <h1 className="text-2xl font-black  italic tracking-tight">
+          Create the trip, plant your flag!
         </h1>
 
         <div className="flex items-center gap-2 mt-4">
@@ -646,7 +646,7 @@ const AddFlag = () => {
               onClick={handleSubmit}
               disabled={loading}
             >
-              {loading ? "Saving..." : "Plant the flag 🚩"}
+              {loading ? "Saving..." : "Plant the flag "}
             </Button>
           )}
         </div>

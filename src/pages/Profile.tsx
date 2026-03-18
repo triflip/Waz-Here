@@ -70,7 +70,7 @@ const Profile = () => {
         <img src={profile.avatar_url} alt={profile.full_name} className="w-full h-full object-cover" />
       ) : (
         <div className="w-full h-full bg-card flex items-center justify-center text-4xl font-black text-primary">
-          {profile.full_name?.charAt(0) ?? '🚩'}
+          {profile.full_name?.charAt(0) ?? '😊'}
         </div>
       )}
     </div>

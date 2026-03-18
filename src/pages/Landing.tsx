@@ -30,7 +30,7 @@ const Landing = () => {
           WAZ HERE
         </h1>
         <p className="text-primary text-sm tracking-[0.3em] mt-2 uppercase">
-          Plant your flag. Own your journey.
+          Plant your flag
         </p>
       </div>
 

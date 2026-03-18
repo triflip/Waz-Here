@@ -10,8 +10,9 @@ declare module 'react-globe.gl' {
 }
 
   export interface GlobeInstance {
-    controls: () => GlobeControls
-  }
+  controls: () => GlobeControls
+  pointOfView: (pov: { altitude?: number; lat?: number; lng?: number }) => void
+}
 
   export interface GlobeProps {
     ref?: Ref<GlobeInstance>

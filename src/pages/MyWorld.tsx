@@ -1,4 +1,4 @@
 const MyWorld = () => {
-  return <div>MyWorld</div>
+  return <div>Coming soon</div>
 }
 export default MyWorld
