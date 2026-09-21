@@ -49,7 +49,7 @@ describe('toggleIdea', () => {
   } as any)
 
     const result = await toggleIdea('user-123', 'trip-456')
-    expect(result).toBe(true) // Ha guardat → retorna true
+    expect(result).toBe(true) 
   })
 
   it('retorna false quan el trip estava guardat i es desguarda', async () => {

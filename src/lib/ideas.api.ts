@@ -2,7 +2,6 @@
 import { supabase } from './supabase'
 import type { Trip } from '../types'
 
-// comprova si un trip està guardat 
 export const isIdeaSaved = async (
   userId: string,
   tripId: string
@@ -17,7 +16,6 @@ export const isIdeaSaved = async (
   return !!data
 }
 
-// guarda un trip a ideas
 export const saveIdea = async (
   userId: string,
   tripId: string
@@ -29,7 +27,6 @@ export const saveIdea = async (
   if (error) throw error
 }
 
-// desguarda un trip de ideas
 export const removeIdea = async (
   userId: string,
   tripId: string
@@ -43,7 +40,6 @@ export const removeIdea = async (
   if (error) throw error
 }
 
-// guarda si no està guardat, desguarda si ja ho està
 export const toggleIdea = async (
   userId: string,
   tripId: string
@@ -58,7 +54,6 @@ export const toggleIdea = async (
   }
 }
 
-// trips guardats 
 export const getIdeasByUser = async (userId: string): Promise<Trip[]> => {
   const { data, error } = await supabase
     .from('ideas')
