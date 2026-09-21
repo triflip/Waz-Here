@@ -1,73 +1,125 @@
-# React + TypeScript + Vite
+# 🌍 Waz Here
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Waz Here** is a travel diary web application built with **React and TypeScript**, designed to record and explore trips through an interactive geographic experience.
 
-Currently, two official plugins are available:
+Users can create travel entries, add photos and locations, manage their profile, and explore their saved trips through an interactive 3D globe.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<div align="center">
+  <img src="src/assets/shoots/waz-here-globe.png" width="90%" alt="Waz Here interactive globe with trip marker" />
+</div>
 
-## React Compiler
+<div align="center">
+  <img src="src/assets/shoots/waz-here-profile-mobile.png" width="30%" alt="Waz Here user profile on mobile" />
+  <img src="src/assets/shoots/waz-here-add-photo-mobile.png" width="30%" alt="Waz Here trip creation with photo upload on mobile" />
+  <img src="src/assets/shoots/waz-here-map-mobile.png" width="30%" alt="Waz Here trip creation with Leaflet map on mobile" />
+</div>
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+[![Demo](https://img.shields.io/badge/View%20Demo-9932CC?style=for-the-badge)](https://waz-here.vercel.app/)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## ✨ Features
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **User profiles** — Manage profile information and personal travel data.
+- **Trip creation** — Create new trips with destination, description and additional information.
+- **Photo upload** — Add images to travel entries.
+- **Geolocation** — Select trip coordinates through an interactive Leaflet map.
+- **Interactive globe** — Explore saved trips through geographic markers on a 3D globe.
+- **Trip details** — Open a marker to view information about a specific trip.
+- **Responsive interface** — Adapted to different screen sizes.
+- **Mobile First** — The interface is designed starting from mobile devices and progressively adapting to larger screens.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🛠️ Tech Stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| Category | Technology |
+|---|---|
+| Frontend | React 19, TypeScript |
+| Build Tool | Vite |
+| Styling | Tailwind CSS |
+| Routing | React Router |
+| Backend | Supabase |
+| 3D Globe | React Globe GL |
+| Maps | Leaflet, React Leaflet |
+| Animations | Framer Motion |
+| Icons | Lucide React |
+| Testing | Vitest |
+
+## 📱 Mobile First
+
+Waz Here was designed following a **Mobile First** approach, focusing on the mobile experience as the starting point for the interface.
+
+The responsive layout adapts the application to larger screens while maintaining the same core functionality across devices.
+
+## 🗺️ Interactive Geography
+
+One of the main features of Waz Here is its geographic experience.
+
+Trips are associated with latitude and longitude coordinates and displayed as interactive markers on a 3D globe. Selecting a marker opens the corresponding trip information.
+
+When creating a trip, users can also select its location directly through a **Leaflet** map.
+
+## 💡 Project Concept
+
+Waz Here started as a personal project idea focused on combining travel memories with an interactive geographic interface.
+
+The project explores how different interfaces — profiles, forms, maps and a 3D globe — can work together to create a visual way of recording and revisiting travel experiences.
+
+## ⚙️ Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/triflip/Waz-Here.git
+   cd Waz-Here
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Create a `.env` file in the project root:
+
+   ```env
+   VITE_SUPABASE_URL=your_supabase_url
+   VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+   ```
+
+4. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+5. Open the local URL provided by Vite in your browser.
+
+## 🧪 Testing
+
+The project includes tests using **Vitest**.
+
+Run the test suite with:
+
+```bash
+npm run test
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📜 Available Scripts
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```text
+npm run dev       Start the development server
+npm run build     Build the application for production
+npm run preview   Preview the production build
+npm run lint      Run ESLint
+npm run test      Run Vitest
 ```
+
+## 🚀 Deployment
+
+The application is deployed on **Vercel**.
+
+[![Demo](https://img.shields.io/badge/View%20Demo-9932CC?style=for-the-badge)](https://waz-here.vercel.app/)
+
+---
+
+Built with React, TypeScript, Supabase and React Globe GL.
