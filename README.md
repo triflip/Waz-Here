@@ -69,3 +69,53 @@ The application brings together profiles, trip creation, photos, maps and a 3D g
    ```bash
    git clone https://github.com/triflip/Waz-Here.git
    cd Waz-Here
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Create a `.env` file in the project root:
+
+   ```env
+   VITE_SUPABASE_URL=your_supabase_url
+   VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+   ```
+
+4. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+5. Open the local URL provided by Vite in your browser.
+
+## 🧪 Testing
+
+The project includes tests using **Vitest**.
+
+Run the test suite with:
+
+```bash
+npm run test
+```
+
+## 📜 Available Scripts
+
+```text
+npm run dev       Start the development server
+npm run build     Build the application for production
+npm run preview   Preview the production build
+npm run lint      Run ESLint
+npm run test      Run Vitest
+```
+
+## 🚀 Deployment
+
+The application is deployed on **Vercel**.
+
+---
+
+Built from a personal idea to explore travel through a visual, interactive experience.
