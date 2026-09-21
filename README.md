@@ -5,13 +5,11 @@
 Users can create travel entries, add photos and locations, manage their profile, and explore their saved trips through an interactive 3D globe.
 
 <div align="center">
-  <img src="src/assets/shoots/waz-here-globe.png" width="90%" alt="Waz Here interactive globe with trip marker" />
+  <img src="src/assets/shoots/waz-here-globe.png" width="90%" alt="Waz Here interactive globe" />
 </div>
 
 <div align="center">
-  <img src="src/assets/shoots/waz-here-profile-mobile.png" width="30%" alt="Waz Here user profile on mobile" />
-  <img src="src/assets/shoots/waz-here-add-photo-mobile.png" width="30%" alt="Waz Here trip creation with photo upload on mobile" />
-  <img src="src/assets/shoots/waz-here-map-mobile.png" width="30%" alt="Waz Here trip creation with Leaflet map on mobile" />
+  <img src="src/assets/shoots/waz-here-mobile.jpeg" width="90%" alt="Waz Here mobile experience" />
 </div>
 
 [![Demo](https://img.shields.io/badge/View%20Demo-9932CC?style=for-the-badge)](https://waz-here.vercel.app/)
