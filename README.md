@@ -1,6 +1,6 @@
 # 🌍 Waz Here
 
-**Waz Here** is a travel diary web application built with **React and TypeScript**, designed to record and explore trips through an interactive geographic experience.
+**Waz Here** is a travel diary web application I designed and built with **React and TypeScript**, combining travel memories with an interactive geographic experience.
 
 Users can create travel entries, add photos and locations, manage their profile, and explore their saved trips through an interactive 3D globe.
 
@@ -25,7 +25,7 @@ Users can create travel entries, add photos and locations, manage their profile,
 - **Interactive globe** — Explore saved trips through geographic markers on a 3D globe.
 - **Trip details** — Open a marker to view information about a specific trip.
 - **Responsive interface** — Adapted to different screen sizes.
-- **Mobile First** — The interface is designed starting from mobile devices and progressively adapting to larger screens.
+- **Mobile First** — Designed with the mobile experience as the starting point.
 
 ## 🛠️ Tech Stack
 
@@ -58,9 +58,9 @@ When creating a trip, users can also select its location directly through a **Le
 
 ## 💡 Project Concept
 
-Waz Here started as a personal project idea focused on combining travel memories with an interactive geographic interface.
+Waz Here started as a personal project idea to combine travel memories with an interactive geographic experience.
 
-The project explores how different interfaces — profiles, forms, maps and a 3D globe — can work together to create a visual way of recording and revisiting travel experiences.
+The application brings together profiles, trip creation, photos, maps and a 3D globe to create a visual way of recording and revisiting travel experiences.
 
 ## ⚙️ Installation
 
@@ -69,55 +69,3 @@ The project explores how different interfaces — profiles, forms, maps and a 3D
    ```bash
    git clone https://github.com/triflip/Waz-Here.git
    cd Waz-Here
-   ```
-
-2. Install dependencies:
-
-   ```bash
-   npm install
-   ```
-
-3. Create a `.env` file in the project root:
-
-   ```env
-   VITE_SUPABASE_URL=your_supabase_url
-   VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
-   ```
-
-4. Start the development server:
-
-   ```bash
-   npm run dev
-   ```
-
-5. Open the local URL provided by Vite in your browser.
-
-## 🧪 Testing
-
-The project includes tests using **Vitest**.
-
-Run the test suite with:
-
-```bash
-npm run test
-```
-
-## 📜 Available Scripts
-
-```text
-npm run dev       Start the development server
-npm run build     Build the application for production
-npm run preview   Preview the production build
-npm run lint      Run ESLint
-npm run test      Run Vitest
-```
-
-## 🚀 Deployment
-
-The application is deployed on **Vercel**.
-
-[![Demo](https://img.shields.io/badge/View%20Demo-9932CC?style=for-the-badge)](https://waz-here.vercel.app/)
-
----
-
-Built with React, TypeScript, Supabase and React Globe GL.
